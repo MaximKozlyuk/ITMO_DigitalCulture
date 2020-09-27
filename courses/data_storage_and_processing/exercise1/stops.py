@@ -1,6 +1,6 @@
 import csv
 
-with open("./stops_data.csv") as csv_stops_data:
+with open("stops_data.csv") as csv_stops_data:
     csv_reader = csv.reader(csv_stops_data, delimiter=',')
     line_count = 0
     for row in csv_reader:

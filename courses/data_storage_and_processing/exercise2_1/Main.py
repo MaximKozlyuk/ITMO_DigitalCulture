@@ -1,9 +1,9 @@
 import math
 
-from exercise2_1.StockAnalytics import StockAnalytics
-from exercise2_1.StockExchangeData import StockExchangeData
+from courses.data_storage_and_processing.exercise2_1.StockAnalytics import StockAnalytics
+from courses.data_storage_and_processing.exercise2_1.StockExchangeData import StockExchangeData
 
-data_file_path = "/Users/max/PycharmProjects/ITMO_DigitalCulture/exercise2_1/data/SPFB.RTS-12.18_180901_181231.csv"
+data_file_path = "/courses/data_storage_and_processing/exercise2_1/data/SPFB.RTS-12.18_180901_181231.csv"
 stock_dataFile = StockExchangeData(data_file_path)
 candles = stock_dataFile.read_candles()
 print("Read ", len(candles), " candles records from data file.")

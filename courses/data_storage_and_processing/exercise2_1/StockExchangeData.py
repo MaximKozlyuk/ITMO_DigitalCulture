@@ -1,4 +1,4 @@
-from exercise2_1.Candle import PriceInfo, Candle, CandleDate
+from courses.data_storage_and_processing.exercise2_1.Candle import PriceInfo, Candle, CandleDate
 
 
 class StockExchangeData:
