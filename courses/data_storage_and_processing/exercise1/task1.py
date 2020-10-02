@@ -46,11 +46,11 @@ def calculate(table: list):
             hours = int(empty_time // 3600)
             minutes = int((empty_time - hours * 3600) // 60)
             seconds = int(empty_time - hours * 3600 - minutes * 60)
-            if hours < 10 :
+            if hours < 10:
                 hours = '0' + str(hours)
-            if minutes < 10 :
+            if minutes < 10:
                 minutes = '0' + str(minutes)
-            if seconds < 10 :
+            if seconds < 10:
                 seconds = '0' + str(seconds)
             values_of_empty_time.append(str(hours) + ':' + str(minutes) + ':' + str(seconds))
             table[row][tram_with_empty_times] = str(hours) + ':' + str(minutes) + ':' + str(seconds)
