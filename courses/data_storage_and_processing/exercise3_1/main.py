@@ -49,7 +49,7 @@ def exp_norm(data: dict, min_distance: int, min_stop_count: int, min_cost: int):
             else:
                 best1[key] = norm_data[key]
         elif len(best2.keys()) == 0 or norm_data[key] < best2[list(best2.keys())[0]]:
-            if len(best1.keys()) != 0:
+            if len(best2.keys()) != 0:
                 if len(best3.keys()) != 0:
                     id3 = list(best3.keys())[0]
                     best3.pop(id3)
