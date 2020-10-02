@@ -26,6 +26,9 @@ class Candle:
     def sum_volume(self) -> float:
         return self.__price_info.sum_volume()
 
+    def is_price_grow(self) -> bool:
+        return self.__price_info.is_price_grow()
+
 
 class PriceInfo:
 
@@ -50,6 +53,9 @@ class PriceInfo:
 
     def isPriceChanged(self) -> bool:
         return self.__price_open == self.__close
+
+    def is_price_grow(self) -> bool:
+        return self.__price_open < self.__close
 
 
 class CandleDate:
