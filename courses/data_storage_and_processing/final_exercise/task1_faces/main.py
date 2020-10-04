@@ -1,7 +1,7 @@
 # final exercise solution
 import matplotlib.pyplot as plt
 
-from courses.data_storage_and_processing.final_exercise.task_1_faces.CoordinatesDataFile import CoordinatesDataFile
+from courses.data_storage_and_processing.final_exercise.task1_faces.CoordinatesDataFile import CoordinatesDataFile
 
 # read all coordinates
 data_file = CoordinatesDataFile(input("Enter path to file with coordinates:"))
