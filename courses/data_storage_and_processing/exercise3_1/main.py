@@ -42,6 +42,10 @@ def exp_norm(data: dict, min_distance: int, min_stop_count: int, min_cost: int):
                     id3 = list(best2.keys())[0]
                     value3 = best2.pop(list(best2.keys())[0])
                     best3[id3] = value3
+                else:
+                    id3 = list(best2.keys())[0]
+                    value3 = best2.pop(list(best2.keys())[0])
+                    best3[id3] = value3
                 id2 = list(best1.keys())[0]
                 value2 = best1.pop(list(best1.keys())[0])
                 best2[id2] = value2
@@ -56,11 +60,12 @@ def exp_norm(data: dict, min_distance: int, min_stop_count: int, min_cost: int):
                     id3 = list(best2.keys())[0]
                     value3 = best2.pop(list(best2.keys())[0])
                     best3[id3] = value3
+                    best2[key] = norm_data[key]
                 else:
                     id3 = list(best2.keys())[0]
                     value3 = best2.pop(list(best2.keys())[0])
                     best3[id3] = value3
-                best2[key] = norm_data[key]
+                    best2[key] = norm_data[key]
             else:
                 best2[key] = norm_data[key]
         elif len(best3.keys()) == 0 or norm_data[key] < best3[list(best3.keys())[0]]:
@@ -72,6 +77,7 @@ def exp_norm(data: dict, min_distance: int, min_stop_count: int, min_cost: int):
                 best3[key] = norm_data[key]
     result = list(map(int, [list(best1.keys())[0], list(best2.keys())[0], list(best3.keys())[0]]))
     result.sort()
+    print(norm_data)
     return result
 
 
