@@ -1,4 +1,4 @@
-# Агломеративная кластеризация   Опрос 4
+# Агломеративная кластеризация   Опрос 4,5
 class Object:
 
     def __init__(self, x, y) -> None:
@@ -26,6 +26,9 @@ class Cluster:
 
     def objects(self) -> []:
         return list(self.__objects)
+
+    def merge(self, objects):
+        self.__objects.append(objects)
 
     def full_connect_dist(self, cluster2) -> float:
         cluster2_objects = cluster2.objects()
@@ -66,3 +69,15 @@ class Cluster:
         x_avg /= len(self.__objects)
         y_avg /= len(self.__objects)
         return Object(x_avg, y_avg)
+
+
+# clustering from set of single object clusters
+class HierarchicalCluster:
+
+    # accepting [Object(1,2), Object(2,3) ...]
+    def __init__(self, clusters) -> None:
+        self.__clusters = clusters
+        super().__init__()
+
+    def do_clustering(self) -> None:
+        return
