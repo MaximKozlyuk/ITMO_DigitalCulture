@@ -30,6 +30,9 @@ class Cluster:
     def merge(self, objects):
         self.__objects.append(objects)
 
+    def variation(self) -> float:
+        raise Exception("not implemented")
+
     def full_connect_dist(self, cluster2) -> float:
         cluster2_objects = cluster2.objects()
         max_dist = 0.0
