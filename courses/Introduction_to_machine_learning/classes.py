@@ -131,3 +131,17 @@ class TaxiCabDist:
 
     def dist(self, p, q) -> float:
         return min(self.t(p, c) + self.t(c, d) + self.t(d, q) for c in self.corners(p) for d in self.corners(q))
+
+
+class LinealNorma:
+
+    def __init__(self, arr) -> None:
+        self.__arr = arr
+        super().__init__()
+
+    def normed_arr(self) -> []:
+        norm = list(self.__arr)
+        delta = max(self.__arr) - min(self.__arr)
+        for i in range(len(norm)):
+            norm[i] /= delta
+        return norm
