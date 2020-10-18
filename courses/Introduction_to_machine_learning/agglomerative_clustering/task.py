@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from courses.Introduction_to_machine_learning.agglomerative_clustering.classes import Cluster, Object
+from courses.Introduction_to_machine_learning.classes import Cluster, Object
 
 cluster1 = Cluster([
     Object(1, 2), Object(0, 3), Object(-1, 1)

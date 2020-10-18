@@ -1,4 +1,7 @@
 # Агломеративная кластеризация   Опрос 4,5
+from math import floor, ceil
+
+
 class Object:
 
     def __init__(self, x, y) -> None:
@@ -12,10 +15,24 @@ class Object:
     def y(self) -> float:
         return self.__y
 
-    def evklid_dist_to(self, dot) -> float:
+    def evklid_dist_to(self, point) -> float:
         return pow(
-            pow(self.x() - dot.x(), 2) + pow(self.y() - dot.y(), 2), 1 / 2
+            pow(self.x() - point.x(), 2) + pow(self.y() - point.y(), 2), 1 / 2
         )
+
+    def manheten_dist_to(self, point) -> float:
+        return TaxiCabDist().dist((self.x(), self.y()), (point.x(), point.y()))
+
+    def chebishev_dist_to(self, point) -> float:
+        x = abs(point.x() - self.x())
+        y = abs(point.y() - self.y())
+        if x >= y:
+            return x
+        else:
+            return y
+
+    def __str__(self) -> str:
+        return "[" + str(self.__x) + ", " + str(self.__y) + "]"
 
 
 class Cluster:
@@ -73,6 +90,18 @@ class Cluster:
         y_avg /= len(self.__objects)
         return Object(x_avg, y_avg)
 
+    # внутрикластерное расстояние
+    def w(self) -> float:
+        cluster_inner_dist = 0.0
+        for i in range(len(self.__objects)):
+            for j in range(len(self.__objects)):
+                cluster_inner_dist += self.__objects[i].evklid_dist_to(self.__objects[j])
+        return cluster_inner_dist
+
+    # среднее внутрикластерное расстояние
+    def avg_w(self) -> float:
+        return self.w() / len(self.__objects)
+
 
 # clustering from set of single object clusters
 class HierarchicalCluster:
@@ -84,3 +113,21 @@ class HierarchicalCluster:
 
     def do_clustering(self) -> None:
         return
+
+
+class TaxiCabDist:
+
+    def t(self, p, q) -> float:
+        x, y = p
+        z, w = q
+        return abs(x - z) + abs(y - w)
+
+    def corners(self, p) -> []:
+        x, y = p
+        if isinstance(x, float):
+            return [(floor(x), y), (ceil(x), y)]
+        else:
+            return [(x, floor(y)), (x, ceil(y))]
+
+    def dist(self, p, q) -> float:
+        return min(self.t(p, c) + self.t(c, d) + self.t(d, q) for c in self.corners(p) for d in self.corners(q))
