@@ -140,8 +140,11 @@ class LinealNorma:
         super().__init__()
 
     def normed_arr(self) -> []:
-        norm = list(self.__arr)
-        delta = max(self.__arr) - min(self.__arr)
-        for i in range(len(norm)):
-            norm[i] /= delta
+        norm = []
+        x_max = max(self.__arr)
+        x_min = min(self.__arr)
+        max_min_sum = x_max + x_min
+        delta = x_max - x_min
+        for i in range(len(self.__arr)):
+            norm.append((2 * self.__arr[i] - max_min_sum) / delta)
         return norm
